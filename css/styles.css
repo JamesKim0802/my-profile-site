@@ -1,0 +1,483 @@
+/* CSS Variables for Theming */
+:root {
+    --color-bg-light: #ffffff;
+    --color-bg-warm: #f5f5f0;
+    --color-bg-beige: #fafaf8;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-gold: #d4af37;
+    --color-charcoal: #1a1a1a;
+}
+
+.dark {
+    --color-bg-light: #1a1a1a;
+    --color-bg-warm: #2a2a2a;
+    --color-bg-beige: #252525;
+    --color-text-primary: #f5f5f0;
+    --color-text-secondary: #a0a0a0;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Scroll Animation Class */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation Styles */
+#navbar {
+    background-color: transparent;
+}
+
+#navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark #navbar.scrolled {
+    background-color: rgba(26, 26, 26, 0.95);
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-charcoal);
+}
+
+.dark .nav-link:hover {
+    color: var(--color-gold);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-charcoal);
+    transition: width 0.3s ease;
+}
+
+.dark .nav-link::after {
+    background-color: var(--color-gold);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Profile Image */
+.profile-image-container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.dark .profile-image-container {
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.05);
+}
+
+.dark .profile-image-container:hover {
+    box-shadow: 0 25px 60px rgba(255, 255, 255, 0.1);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    display: inline-flex;
+    animation: float 2s ease-in-out infinite;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 4rem;
+    }
+}
+
+/* Stat Cards */
+.stat-card {
+    padding: 1.5rem;
+    background-color: var(--color-bg-beige);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .stat-card {
+    background-color: var(--color-bg-beige);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .stat-card:hover {
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+}
+
+.stat-card-large {
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .stat-card-large {
+    background-color: var(--color-bg-beige);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-card-large:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .stat-card-large:hover {
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.05);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-warm);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.dark .stat-icon {
+    background-color: var(--color-bg-warm);
+}
+
+/* Skill Cards */
+.skill-card {
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.dark .skill-card {
+    background-color: var(--color-bg-beige);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.dark .skill-card:hover {
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-card-special {
+    border-color: var(--color-gold);
+    border-width: 2px;
+}
+
+.skill-card-special:hover {
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+    border-color: var(--color-gold);
+}
+
+/* Project Card */
+.project-card {
+    max-width: 900px;
+    width: 100%;
+    padding: 3rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .project-card {
+    background-color: var(--color-bg-beige);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.dark .project-card:hover {
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.08);
+}
+
+/* Achievement Cards */
+.achievement-card {
+    padding: 2rem;
+    background-color: var(--color-bg-beige);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dark .achievement-card {
+    background-color: var(--color-bg-warm);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.achievement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .achievement-card:hover {
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+}
+
+.achievement-gold {
+    border-color: var(--color-gold);
+    border-width: 2px;
+}
+
+.achievement-gold:hover {
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.achievement-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.dark .achievement-icon {
+    background-color: var(--color-bg-beige);
+}
+
+.achievement-gold .achievement-icon {
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--color-gold);
+}
+
+/* Email Button */
+.email-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2.5rem;
+    background-color: var(--color-bg-beige);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dark .email-button {
+    background-color: var(--color-bg-beige);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.email-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-charcoal);
+}
+
+.dark .email-button:hover {
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+    border-color: var(--color-gold);
+}
+
+.email-button:active {
+    transform: translateY(0);
+}
+
+/* Copy Toast */
+.copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.dark .copy-toast {
+    background-color: var(--color-bg-warm);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile Menu */
+#mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .project-card {
+        padding: 2rem;
+    }
+
+    .achievement-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll-indicator {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    nav,
+    .scroll-indicator,
+    #theme-toggle,
+    .copy-toast {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .project-card,
+    .stat-card,
+    .skill-card,
+    .achievement-card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
