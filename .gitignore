@@ -1,0 +1,17 @@
+# 독립 Git 저장소로 관리되는 하위 프로젝트들 제외
+courses/
+MCP/
+bucket-list-main/
+my-profile-site/
+output-style-test/
+test/
+user-memory-setup/
+video-pipeline/
+
+# 일반적인 제외 항목
+node_modules/
+.next/
+.env
+.env.local
+*.log
+nul
